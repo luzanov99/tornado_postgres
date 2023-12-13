@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8888:8888"
+    environment:
+      - DB_URL=postgresql://user:password@postgres:5432/database
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: database
+    ports:
+      - "5432:5432"
